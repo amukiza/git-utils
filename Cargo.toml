@@ -1,5 +1,5 @@
 [package]
-name = "git-move"
+name = "gitutils"
 version = "0.1.0"
 authors = ["Mukiza Andrew <andrewmukiza@gmail.com>"]
 
