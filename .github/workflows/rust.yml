@@ -48,8 +48,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: print inputs
+    - name: print context
       run: echo "${{ toJson(github) }}"
+    - name: print inputs
+      run: echo "${{ toJson(inputs) }}"
+    - name: print inputs
+      run: echo "${{ toJson(job) }}"
     - name: Build
       run: cargo build --verbose
     - name: Run tests
