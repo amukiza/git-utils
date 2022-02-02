@@ -49,7 +49,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: print context
-      run: echo "${{ toJson(github.event.inputs) }}"
+      run: echo "${{ github.event.inputs }}"
     - name: print inputs
       run: echo "${{ toJson(inputs) }}"
     - name: print inputs
