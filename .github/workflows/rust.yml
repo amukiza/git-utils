@@ -49,7 +49,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: print inputs
-      run: echo "${{ github }}"
+      run: echo "${{ toJson(github) }}"
     - name: Build
       run: cargo build --verbose
     - name: Run tests
