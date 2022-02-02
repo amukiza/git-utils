@@ -1,6 +1,41 @@
 name: Rust
 
 on:
+  workflow_dispatch:
+    inputs:
+      runner_label:
+        description: 'Runner label to target a particular environment'
+        default: 'pdiatl'
+        required: true
+      target:
+        description: 'Target environment'
+        default: 'pp'
+        required: true
+      ref:
+        description: 'GIT ref/branch/tag to deploy'
+        default: 'master'
+        required: true
+      modules:
+        description: 'Comma-separated module names'
+        required: true
+  workflow_call:
+    inputs:
+      runner_label:
+        type: string
+        description: 'Runner label to target a particular environment'
+        required: true
+      target:
+        type: string
+        description: 'Target environment'
+        required: true
+      ref:
+        type: string
+        description: 'GIT ref/branch/tag to deploy'
+        required: true
+      modules:
+        type: string
+        description: 'Comma-separated module names'
+        required: true
   push:
     branches: [ master ]
   pull_request:
@@ -13,7 +48,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: print inputs
+      run: echo "${{ inputs }}"
     - name: Build
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+
